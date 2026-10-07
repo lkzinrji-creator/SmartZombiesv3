@@ -18,13 +18,16 @@ jobs:
           distribution: temurin
           java-version: '25'
 
+      - name: Verificar Java
+        run: java -version
+
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.14.3'
 
       - name: Compilar Smart Zombies
-        run: gradle build --no-daemon
+        run: gradle build --no-daemon --stacktrace
 
       - name: Enviar JAR
         uses: actions/upload-artifact@v4
